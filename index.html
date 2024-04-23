@@ -55,7 +55,7 @@ font-family: Arial !important;
     </ul>
     <h2>MODS:</h2>
     <hr />
-    <ul>
+    <ul id="modList">
       <li><a href="https://www.curseforge.com/projects/639653">Dave's Potioneering</a> <span>[10] by Tfarcenim</span></li>
 <li><a href="https://modrinth.com/mod/ccKDOlHs">oωo</a> <span>[0.11.2+1.20] by glisco, BasiqueEvangelist, Noaaan</span></li>
 <li><a href="https://www.curseforge.com/projects/854949">Fusion</a> <span>[1.1.1] by SuperMartijn642</span></li>
@@ -234,3 +234,36 @@ font-family: Arial !important;
     </ul>
   </body>
 </html>
+<script>
+function sortList() {
+  var list, i, switching, b, shouldSwitch;
+  list = document.getElementById("modList");
+  switching = true;
+  /* Make a loop that will continue until
+  no switching has been done: */
+  while (switching) {
+    // Start by saying: no switching is done:
+    switching = false;
+    b = list.getElementsByTagName("LI");
+    // Loop through all list items:
+    for (i = 0; i < (b.length - 1); i++) {
+      // Start by saying there should be no switching:
+      shouldSwitch = false;
+      /* Check if the next item should
+      switch place with the current item: */
+      if (b[i].innerHTML.toLowerCase() > b[i + 1].innerHTML.toLowerCase()) {
+        /* If next item is alphabetically lower than current item,
+        mark as a switch and break the loop: */
+        shouldSwitch = true;
+        break;
+      }
+    }
+    if (shouldSwitch) {
+      /* If a switch has been marked, make the switch
+      and mark the switch as done: */
+      b[i].parentNode.insertBefore(b[i + 1], b[i]);
+      switching = true;
+    }
+  }
+}
+</script>
